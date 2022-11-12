@@ -1,0 +1,14 @@
+<view class="background">
+  <image src="../../static/img/iphone.jpg" mode="scaleToFill" class="img"/>
+  <view class="container">
+    <view class="title">无忧饮食</view>
+    <view class="user_form">
+      <input type="text" model:value="{{username}}" placeholder="请输入用户名..."/>
+      <input type="safe-password" model:value="{{password}}" placeholder="请输入密码..."/>
+    </view>
+    <view class="option">
+      <button type="warn" bindtap="register">注册</button>
+      <button type="primary" bindtap="login">登录</button>
+    </view>
+  </view>
+</view>

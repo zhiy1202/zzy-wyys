@@ -1,0 +1,56 @@
+<view class="detail">
+  <!-- 评论 -->
+  <view class="common_bar" wx:if="{{commonIsShow}}">
+    <view class="comm_down" bindtap="downComm"></view>
+    <view class="comm_item" wx:for="{{commonList}}" wx:key="{{_id}}">
+      <view>{{item.username}}</view>
+      <text>{{item.content}}</text>
+      <view>{{item.createTime}}</view>
+    </view>
+    <view class="look"></view>
+    <view class="comm_sumbit">
+      <input model:value="{{common}}" type="text" placeholder="评价一下..." style="border:1px black solid;height:100rpx;"/>
+      <button bindtap="addComm">发送</button>
+    </view>
+  </view>
+<!-- 点赞评论 -->
+  <view class="detail_opration" wx:if="{{!commonIsShow}}">
+    <view class="food_like" bindtap="addLike">
+    <image src="../../static/img/xihuan.png"></image>
+      <view>{{foodInfo.likeCount}}</view>
+    </view>
+    <view class="food_common" bindtap="showCommon">
+      <image src="../../static/img/pinglun.png"></image>
+    </view>
+  </view>
+  <!-- 食谱详情 -->
+  <view class="food_detail">
+  <!-- 图片 -->
+    <view class="food_img">
+      <!-- <image src="../../static/img/iphone.jpg" ></image> -->
+      <image src="{{food.foodPath}}" ></image>
+    </view>
+    <!-- 标题 -->
+    <view class="food_title">
+      <text>{{food.name}}</text>
+    </view>
+    <!-- 简介 -->
+    <view class="food_intro">
+      <text>{{food.inro}}</text>
+    </view>
+    <!-- 食材 -->
+    <view class="food_ingre">
+      <view style="font-size: 50rpx;margin-bottom: 10rpx;">食材:</view>
+      <text>{{food.ingredient}}</text>
+    </view>
+    <!-- 操作 -->
+    <view class="food_opration">
+      <view style="font-size: 50rpx;margin-bottom: 10rpx;">操作:</view>
+      <text>
+        {{food.operationn}}
+      </text>
+    </view>
+  </view>
+
+
+</view>

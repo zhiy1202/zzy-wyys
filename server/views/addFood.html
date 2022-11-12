@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cdn.jsdelivr.cn/npm/@bootcss/v3.bootcss.com@1.0.44/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/dashboard/">
+    <title>无忧饮食控制台</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      #app{
+        display: flex;
+      }
+      .nav{
+        flex:1;
+        width: 30%;
+        height: 500px;
+      }
+      content{
+        flex:4;
+      }
+      ul{
+        list-style: none;
+      }
+      li{
+        height:60px;
+        line-height:60px;
+        border-bottom: 1px solid black;
+        text-align: center;
+      }
+      a{
+        text-decoration:none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="nav">
+        <ul >
+          <h1>无忧饮食</h1>
+          <li v-on:click="userOption"><a href="/user">用户管理</a></li>
+          <li v-on:click="foodOption"><a href="/food">食谱管理</a></li>
+          <li v-on:click="addFood"><a href="/addFood">添加食谱</a></li>
+          <li v-on:click="exits"><a href="/admin">退出系统</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main content">
+        <h2 class="sub-header">添加食谱</h2>
+        <form action="/addFood" enctype="multipart/form-data" method="POST">
+            食谱:<input type="text" name="name" placeholder="请输入食谱名"/><br />
+            简介:<input type="text" name="inro" placeholder="请输入简介"/><br />
+            食材:<input type="text" name="ingredient" placeholder="请输入食材"/><br />
+            操作:<input type="text" name="operationn" placeholder="请输入操作"/><br />
+            建议:<input type="text" name="advice" placeholder="请输入建议"/><br />
+            bmi:<input type="text"  name="bmi" placeholder="请输入bmi"/><br />
+            图片:<input type="file" name="file" />
+            <button type="submit">提交</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.cn/npm/@bootcss/v3.bootcss.com@1.0.44/assets/js/vendor/holder.min.js"></script>
+    <script>
+        var vm = new Vue({
+          el:'#app',
+          data:{
+            users:[],
+            foods:[]
+          },
+          methods:{
+            saveFood(){
+                console.log(111);
+                console.log(this.food);
+            },
+            userOption(){
+            },
+            foodOption(){
+            },
+            addFood(){
+            },
+            delUser(userId){
+              let that = this
+              axios.delete('http://localhost:8080/delUserById?userId='+userId).then(data=>{
+                if (data.data) {
+                  alert('删除用户成功')
+                  axios.get('http://localhost:8080/allUser').then(data=>{
+                    that.users = data.data
+                  })
+                }
+              })
+            },
+            exits(){
+              alert('是否退出系统')
+              
+            }
+          },
+          created(){
+            let that = this
+              axios.get('http://localhost:8080/allFood').then(data=>{
+                that.foods = data.data
+            })
+          }
+        })
+    </script>
+  </body>
+</html>

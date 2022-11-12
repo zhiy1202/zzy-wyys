@@ -1,0 +1,26 @@
+<view class="list">
+<!-- 搜索 -->
+  <view class="search">
+    <input style="flex:3;border-bottom:2px black solid;height: 40px;" type="text" model:value="{{foodName}}" placeholder="搜素你喜欢的食谱..."/>
+    <button style="flex:1" bindtap="searchFood">搜索</button>
+  </view>
+  <!-- 列表 -->
+  <view class="food_list">
+    <block wx:for="{{foodList}}">
+      <view class="food_item" bindtap="foodDetail" wx:key="{{item._id}}" data-foodId="{{item._id}}">
+      <!-- 图片 -->
+        <view class="food_img">
+          <!-- <image src="../../static/img/iphone.jpg" mode="aspectFit"></image> -->
+          <image src="{{item.foodPath}}" mode="aspectFit"></image>
+        </view>
+        <!-- 食谱名 -->
+        <view class="food_intro">
+          {{item.name}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="my_tab_bar">
+    <tabBar></tabBar>
+</view>

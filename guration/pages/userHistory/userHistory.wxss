@@ -1,0 +1,29 @@
+/* pages/userLike/userLike.wxss */
+.user_like{
+  width: 100%;
+
+}
+.like_item{
+  width: 100%;
+  height: 150rpx;
+  background-color: grey;
+  display: flex;
+}
+.like_img{
+  /* width: 150rpx;
+  height: 150rpx; */
+  flex: 1;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+.like_name{
+  flex: 3;
+  line-height: 150rpx;
+  font-size: 40rpx;
+  padding-left: 20rpx;
+}
+.like_opration{
+  flex: 1;
+}

@@ -1,0 +1,9 @@
+<!--components/myTabBar/MyTabBar.wxml-->
+<view class="tab_bar">
+  <view bindtap="goFoodList">
+    食谱
+  </view>
+  <view bindtap="goHome">
+    我的
+  </view>
+</view>

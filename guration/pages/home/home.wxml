@@ -1,0 +1,32 @@
+<!--pages/home/home.wxml-->
+<!-- 更新bmi值 -->
+<view class="bmi" wx:if="{{BIMIsShow}}">
+    <view><text>身高(m):</text> <input type="text" model:value="{{userHeight}}" placeholder="请输入身高..." name="" id=""/></view>
+    <view><text>体重(kg):</text> <input type="text" model:value="{{userWeight}}" placeholder="请输入体重..." name="" id=""/></view>
+    <button type="warn" size="mini" bindtap="downBMI">更新</button>
+</view>
+<view class="home">
+  <!-- 个人信息 -->
+  <view class="self">
+  <!-- 头像 -->
+    <view class="self_head">
+      <image src="../../static/img/iphone.jpg"></image>
+    </view>
+    <!-- 用户名 -->
+    <view>
+      <view>
+        <text>用户名:</text>{{userSelf.username}}
+      </view>
+      <view>
+        <text>BMI:</text>{{userSelf.bmi}}
+      </view>
+    </view>
+  </view>
+  <!-- 操作 -->
+  <view class="user_opration">
+    <view class="opration" bindtap="changeUserInfo">更新BMI值</view>
+    <view class="opration" bindtap="userLike">我的喜欢</view>
+    <view class="opration" bindtap="userHistory">浏览历史</view>
+    <view class="opration" bindtap="exit">退出</view>
+  </view>
+</view>

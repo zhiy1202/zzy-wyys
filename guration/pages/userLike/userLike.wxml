@@ -1,0 +1,17 @@
+<!--pages/userLike/userLike.wxml-->
+<view class="user_like">
+  <view class="like_item" wx:for="{{userLikeList}}">
+  <!-- 图片 -->
+      <view class="like_img">
+        <!-- <image src="../../static/img/iphone.jpg"></image> -->
+        <image src="{{item.food}}"></image>
+      </view>
+      <!-- 名字 -->
+      <view class="like_name">{{item.foodName}}</view>
+      <!-- 操作 -->
+      <view class="like_opration">
+        <button type="primary" data-foodId="{{item.foodId}}" size="mini" bindtap="foodDetail">前往</button>
+        <button size="mini" data-likeId="{{item._id}}" bindtap="delMes">删除</button>
+      </view>
+  </view>
+</view>
