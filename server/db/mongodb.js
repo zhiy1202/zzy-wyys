@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require('mongodb');
 
-const url = 'mongodb+srv://zzy:120200@cluster0.wmh2umy.mongodb.net/?retryWrites=true&w=majority';
+const url = 'your mongodb url';
 
 const client = new MongoClient(url);
 //建立数据库
